@@ -1,0 +1,2 @@
+1) Buscar los comentarios 
+crtl + d "Comentarios"

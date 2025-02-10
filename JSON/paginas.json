@@ -1,0 +1,87 @@
+[
+    {
+        "seccion": "inicio",
+        "texto": "Inicio",
+        "titulo": "Inicio",
+        "visible": true
+    },
+    {
+        "seccion": "tienda",
+        "texto": "Tienda",
+        "titulo": "Tienda",
+        "visible": true
+    },
+    {
+        "seccion": "contacto",
+        "texto": "Contacto",
+        "titulo": "Contacto",
+        "visible": true
+    },
+    {
+        "seccion": "sobreNosotros",
+        "texto": "Sobre Nosotros",
+        "titulo": "Sobre Nosotros",
+        "visible": true
+    },
+    {
+        "seccion": "carrito",
+        "texto": "Carrito",
+        "titulo": "Carrito",
+        "visible": false
+    },
+    {
+        "seccion": "producto",
+        "texto": "Producto",
+        "titulo": "Producto",
+        "visible": false
+    },
+    {
+        "seccion": "404",
+        "texto": "404",
+        "titulo": "404",
+        "visible": false
+    },
+    {
+        "seccion": "iniciarSesion",
+        "texto": "IniciarSesion",
+        "titulo": "iniciarSesion",
+        "visible": false
+    },
+    {
+        "seccion": "registrarte",
+        "texto": "registrarte",
+        "titulo": "Registrarte",
+        "visible": false
+    },
+    {
+        "seccion": "cerrarSesion",
+        "texto": "cerrarSesion",
+        "titulo": "cerrarSesion",
+        "visible": false
+    },
+    {
+        "seccion": "admin",
+        "texto": "admin",
+        "titulo": "admin",
+        "visible": false
+    },
+    {
+        "seccion": "editarProducto",
+        "texto": "editarProducto",
+        "titulo": "editarProducto",
+        "visible": false
+    },
+    {
+        "seccion": "eliminarProducto",
+        "texto": "eliminarProducto",
+        "titulo": "eliminarProducto",
+        "visible": false
+    },
+    {
+        "seccion": "agregarProducto",
+        "texto": "agregarProducto",
+        "titulo": "agregarProducto",
+        "visible": false
+    }
+
+]
