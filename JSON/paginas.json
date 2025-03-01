@@ -82,6 +82,12 @@
         "texto": "agregarProducto",
         "titulo": "agregarProducto",
         "visible": false
+    },
+    {
+        "seccion": "user",
+        "texto": "user",
+        "titulo": "user",
+        "visible": false
     }
 
 ]

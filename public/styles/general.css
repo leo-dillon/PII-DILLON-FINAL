@@ -1,0 +1,172 @@
+a {
+    opacity: .9;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+.onActivate {
+    border-bottom: 1px solid var(--white--100);
+}
+
+.seg_3 {
+    animation: seg_3 1s 2s ease-out both;
+}
+
+picture.contenedor_smoke {
+    width: 2000px;
+    position: fixed;
+    bottom: -1000px;
+    right: -1000px;
+    z-index: -1;
+}
+
+.smoke {
+    width: 100%;
+    transform-origin: 50% 50%;
+    z-index: -10;
+    animation: smoke1 12s linear both alternate infinite;
+}
+
+.hover_1:hover{
+    background-color: var(--dark--60) !important;
+}
+.hover_2{
+    border-radius: 12px;
+    font-size: var(--font--2);
+}
+
+.click_1{
+    transition: letter-spacing .1s ease-out;
+}
+.click_1:active{
+    background-color: var(--grey--50) !important;
+    letter-spacing: 2px;
+}
+.click_1_seleccionado{
+    background-color: var(--grey--50) !important;
+    border-right: 1px solid var(--yellow--100) ;
+    letter-spacing: 3px;
+}
+.error{
+    border: 1px solid rgb(170, 0, 0);
+}
+
+.producto{
+    width: 100%;
+    max-width: 260px;
+    position: relative;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: var(--white--90);
+    box-shadow: 0 0 16px var(--dark--80);
+    transition: box-shadow .2s ease-out;
+}
+.producto:hover{
+    box-shadow: 6px 6px 16px var(--dark--80);
+}
+.producto picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 80%;
+    height: 200px;
+    transition: scale .2s ease-out;
+}
+.producto:hover picture{
+    scale: 1.05;
+}
+.producto picture img{
+    max-height: 200px;
+    max-width: 220px;
+    border-radius: 12px;
+    border: 2px solid var(--grey--10);
+}
+.producto h3{
+    font-size: var(--font--4);
+    color: var(--text--dark);
+    text-align: center;
+    border-bottom: 1px solid var(--grey--30);
+}
+.producto p{
+    color: var(--text--light--dark);
+}
+.producto p.descripcion{
+    width: 80%;
+    text-align: center;
+}
+.producto p.precio{
+    padding: 0 24px;
+    font-size: var(--font--2);
+    color: var(--text--dark);
+}
+.producto div{
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.producto div a{
+    padding: 6px 16px;
+    border-radius: 12px;
+    font-size: var(--font--2);
+    cursor: pointer;
+    color: var(--text--dark);
+    border: 1px solid var(--dark--80);
+    transition: background-color .3s ease-out;
+}
+.producto div a:hover{
+    background-color: #a6d9f1;
+}
+
+
+@keyframes seg_3 {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(720deg);
+    }
+}
+
+@keyframes smoke1 {
+    0% {
+        filter: blur(12px);
+        transform: translateY(0px) scale(-1, 1) rotate(15deg);
+        opacity: 0.05;
+    }
+
+    25% {
+        filter: blur(15px);
+        transform: translateY(-10px) scale(-1, 1.05) rotate(30deg);
+        opacity: 0.08;
+    }
+
+    50% {
+        filter: blur(20px);
+        transform: translateY(-20px) scale(-1, 1.1) rotate(55deg);
+        opacity: 0.1;
+    }
+
+    75% {
+        filter: blur(15px);
+        transform: translateY(-30px) scale(-1, 1.15) rotate(70deg);
+        opacity: 0.08;
+    }
+
+    100% {
+        filter: blur(12px);
+        transform: translateY(-40px) scale(-1, 1.2) rotate(75deg);
+        opacity: 0.05;
+    }
+}

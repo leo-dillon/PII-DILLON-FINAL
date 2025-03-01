@@ -1,22 +1,23 @@
 <?php 
-    require_once "./clases/servicios/Funciones.php";
-    require_once "./clases/servicios/Conexion.php";
-    require_once "./clases/modelos/Secciones.php";
-    require_once "./clases/modelos/Productos.php";
-    require_once "./clases/modelos/Usuario.php";
+    require_once "../clases/servicios/Funciones.php";
+    require_once "../clases/servicios/Conexion.php";
+    require_once "../clases/modelos/Productos.php";
+    require_once "../clases/modelos/Usuario.php";
+    require_once "../admin/clases/SeccionesAdmin.php";
     session_start();
     $seccionActual = Funciones::seccionActual();
-    $seccionValidas = Secciones::seccionesValidas();
+    $seccionValidas = SeccionesAdmin::seccionesValidas();
     $seccionFinal = "";
+    if(!isset($_SESSION["rol"]) && $_SESSION['rol'] != "admin"){
+        header("location: ../");
+    }
     if(!in_array($seccionActual, $seccionValidas)){
         $seccionFinal = "404"; 
     }else{
         $seccionFinal = $seccionActual;
     }
     $usuarioLogeado = Usuario::usuarioLogeado(); 
-    if(  isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin' ){
-        header("location: ./admin/admin.php");
-    }
+
 ?>
 
 
@@ -26,21 +27,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu tienda de Perfumes Online</title>
-    <link rel="stylesheet" href="./public/styles/colors.css">
-    <link rel="stylesheet" href="./public/styles/general.css">
-    <link rel="stylesheet" href="./public/styles/modal.css">   
+    <link rel="stylesheet" href="../public/styles/colors.css">
+    <link rel="stylesheet" href="../public/styles/general.css">
+    <link rel="stylesheet" href="../public/styles/modal.css">   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php require_once "./views/layout/header.php";?>  
-    <?php require_once "./views/pages/$seccionFinal.php";?> 
-    <?php require_once "./views/layout/footer.php";?>  
+    <?php require_once "../admin/views/layout/header.php";?>  
+    <?php require_once "../admin/views/pages/$seccionFinal.php";?> 
+    <?php require_once "../admin/views/layout/footer.php";?>  
     
     <picture class="contenedor_smoke">
-        <img class="smoke" src="./public/imagenes/smoke.png" alt="">
+        <img class="smoke" src="../public/imagenes/smoke.png" alt="">
     </picture>
     <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
         <defs>

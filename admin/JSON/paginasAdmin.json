@@ -1,0 +1,44 @@
+[
+    {
+        "seccion": "inicioAdmin",
+        "texto": "inicioAdmin",
+        "titulo": "inicioAdmin",
+        "visible": false
+    },
+    {
+        "seccion": "productos",
+        "texto": "productos",
+        "titulo": "productos",
+        "visible": true
+    },
+    {
+        "seccion": "marcas",
+        "texto": "marcas",
+        "titulo": "marcas",
+        "visible": true
+    },
+    {
+        "seccion": "concentraciones",
+        "texto": "concentraciones",
+        "titulo": "concentraciones",
+        "visible": true 
+    },
+    {
+        "seccion": "fragancias",
+        "texto": "fragancias",
+        "titulo": "fragancias",
+        "visible": true
+    },
+    {
+        "seccion": "generos",
+        "texto": "generos",
+        "titulo": "generos",
+        "visible": true
+    },
+    {
+        "seccion": "404",
+        "texto": "404",
+        "titulo": "404",
+        "visible": false
+    }
+]

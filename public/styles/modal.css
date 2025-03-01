@@ -1,0 +1,223 @@
+.contenedorModal{
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 24px;
+    border: 3px solid var(--white--80);
+    border-radius: 24px;
+    background-color: var(--dark--100);
+    z-index: 101;
+}
+
+
+.contenedorModal.editarProducto{
+}
+
+.contenedorModal.editarProducto h2{
+    border-bottom: 1px solid var(--white--100);
+    font-weight: 500;
+}
+.contenedorModal.editarProducto picture{
+    max-width: 124px;
+}
+.contenedorModal.editarProducto picture img{
+    width: 100%;
+    border-radius: 24px;
+}
+.contenedorModal.editarProducto form{
+    overflow-y: scroll;
+    max-height: 500px;
+    width: 300px;
+    padding: 12px 24px;
+    border: 1px solid var(--text--light--dark);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.contenedorModal.editarProducto form label{
+    margin-top: 8px;
+}
+.contenedorModal.editarProducto form input,
+.contenedorModal.editarProducto form textarea,
+.contenedorModal.editarProducto form select,
+.contenedorModal.editarProducto form option{
+    padding: 0 12px;
+    color: var(--text--light--dark);
+}
+.contenedorModal.editarProducto form textarea{
+    min-height: 64px;
+}
+.contenedorModal.editarProducto form input[type = submit]{
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.contenedorModal.crearProducto{
+}
+
+.contenedorModal.crearProducto h2{
+    border-bottom: 1px solid var(--white--100);
+    font-weight: 500;
+}
+.contenedorModal.crearProducto picture{
+    max-width: 124px;
+}
+.contenedorModal.crearProducto picture img{
+    width: 100%;
+    border-radius: 24px;
+}
+.contenedorModal.crearProducto form{
+    overflow-y: scroll;
+    max-height: 500px;
+    width: 300px;
+    padding: 12px 24px;
+    border: 1px solid var(--text--light--dark);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.contenedorModal.crearProducto form label{
+    margin-top: 8px;
+}
+.contenedorModal.crearProducto form input *,
+.contenedorModal.crearProducto form input,
+.contenedorModal.crearProducto form textarea,
+.contenedorModal.crearProducto form select,
+.contenedorModal.crearProducto form option{
+    padding: 0 12px;
+    color: var(--text--light--dark);
+}
+.contenedorModal.crearProducto form textarea{
+    min-height: 64px;
+}
+.contenedorModal.crearProducto form input[type = submit]{
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+
+.contenedorModal.editarDato{
+}
+
+.contenedorModal.editarDato h2{
+    border-bottom: 1px solid var(--white--100);
+    font-weight: 500;
+}
+
+.contenedorModal.editarDato form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.contenedorModal.editarDato form input{
+    padding: 0 12px;
+    margin: 6px 0 0;
+    font-size: var(--font--2);
+    color: var(--text--light--dark);
+}
+.contenedorModal.editarDato form input[type = submit]{
+    cursor: pointer;
+}
+.contenedorModal.editarDato button{
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background-color: var(--grey--50);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.contenedorModal.editarDato button i{
+    font-size: var(--font--3);
+    transition: scale .1s ease-out;
+}
+.contenedorModal.editarDato button:hover i{
+    scale: 1.1;
+}
+
+.contenedorModal.error{
+
+}
+.contenedorModal.error h2{
+    font-size: var(--font--5);
+    border-bottom: 1px solid var(--text--light--dark);
+}
+.contenedorModal.error i{
+    font-size: 63px;
+    color: red;
+}
+.contenedorModal.error p{
+    text-align: center;
+    font-size: var(--font--2);
+}
+.contenedorModal.error button{
+    width: 80%;
+    text-align: center;
+    font-size: var(--font--3);
+    background-color: var(--text--light--dark);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.contenedorModal.exito{
+
+}
+.contenedorModal.exito h2{
+    font-size: var(--font--5);
+    border-bottom: 1px solid var(--text--light--dark);
+}
+.contenedorModal.exito i{
+    font-size: 63px;
+    color: greenyellow;
+}
+.contenedorModal.exito p{
+    text-align: center;
+    font-size: var(--font--2);
+}
+.contenedorModal.exito button{
+    width: 80%;
+    text-align: center;
+    font-size: var(--font--3);
+    background-color: var(--text--light--dark);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.contenedorModal.eliminarProducto{
+
+}
+.contenedorModal.eliminarProducto h2{
+    text-align: center;
+    font-size: var(--font--4);
+    border-bottom: 1px solid var(--text--light--dark);
+}
+.contenedorModal.eliminarProducto picture{
+    max-width: 124px;
+}
+.contenedorModal.eliminarProducto picture img{
+    width: 100%;
+    border-radius: 24px;
+}
+.contenedorModal.eliminarProducto div{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.contenedorModal.eliminarProducto div button{
+    width: 40%;
+    text-align: center;
+    font-size: var(--font--3);
+    background-color: var(--text--light--dark);
+    border-radius: 12px;
+    cursor: pointer;
+}
