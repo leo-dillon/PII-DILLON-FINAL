@@ -60,10 +60,34 @@ export async function tablaDatosCarrito(contenedorTablaDatos, usuario_id){
             contenedor_div_form_btnMas.append(contenedor_div_form_btnMas_i)
             contenedor_div_form.append(contenedor_div_form_btnMenos, contenedor_div_form_input, contenedor_div_form_btnMas)
             let contenedor_div_p = crearElemento('p', {}, `$${dato.precio * dato.cantidad}`)
-
+            let contenedor_div_vaciarCarrito = crearElemento('button', {
+                type: "button",
+                id: "vaciar",
+                title: "Eliminar Producto"
+            })
+            let contenedor_div_vaciarCarrito_i = crearElemento('i', {
+                class: "fa-solid fa-trash"
+            })
+            contenedor_div_vaciarCarrito.append(contenedor_div_vaciarCarrito_i)
             contenedor_div_picture.append(contenedor_div_picture_img)
-            contenedor_div.append(contenedor_div_picture, contenedor_div_h3, contenedor_div_form ,contenedor_div_p)
+            contenedor_div.append(contenedor_div_picture, contenedor_div_h3, contenedor_div_form ,contenedor_div_p, contenedor_div_vaciarCarrito)
             
+
+            contenedor_div_vaciarCarrito.addEventListener('click', () => {
+                let usuario_id = contenedor_div_form.getAttribute('data-usuarioID')
+                let producto_id = contenedor_div_form.getAttribute('data-productoID')
+                let cantidad = contenedor_div_form_input.value
+                eliminarProducto(
+                    producto_id, 
+                    usuario_id, 
+                    dato.imagen, 
+                    dato.nombre, 
+                    contenedor_div, 
+                    dato.precio, 
+                    actualizarPrecioFinal,
+                    cantidad
+                )
+            })
             contenedor_div_form_btnMas.addEventListener('click', async (event) => {
                 event.preventDefault()
                 if(contenedor_div_form_input.value >= dato.stock){
@@ -158,15 +182,15 @@ export async function tablaDatosCarrito(contenedorTablaDatos, usuario_id){
     }
 }
 
-function actualizarPrecioFinal(valor){
+function actualizarPrecioFinal(valor, cantidad = 1){
     let contenedorPrecioFinal = document.querySelector("p.precioFinal span")
     let contenedorCantidad = document.querySelector('p.cantidadProductos span')
     let precioFinal = parseInt(contenedorPrecioFinal.innerText.replace("$", ''))
     let cantidadProducto = parseInt(contenedorCantidad.innerText)
     if(valor > 0){
-        contenedorCantidad.innerText = cantidadProducto + 1
+        contenedorCantidad.innerText = cantidadProducto + cantidad
     }else{
-        contenedorCantidad.innerText = cantidadProducto - 1
+        contenedorCantidad.innerText = cantidadProducto - cantidad
     }
     contenedorPrecioFinal.innerText = `$${precioFinal + parseInt(valor)}`
 

@@ -1,10 +1,8 @@
-<?php
-class Conexion
-{
+<?php class Conexion{
     private const DB_SERVER = "localhost";
     private const DB_USER = "root";
     private const DB_PASS = "";
-    private const DB_NAME = "final_prueba";
+    private const DB_NAME = "SQL_DILLON_FINAL";
     private const DB_CHARSET = "utf8mb4";
 
     private const DB_DSN = "mysql:host=" . self::DB_SERVER . ";dbname=" . self::DB_NAME . ";charset=" . self::DB_CHARSET;
@@ -38,6 +36,4 @@ class Conexion
         }
         return self::$db;
     }
-
 }
-?>

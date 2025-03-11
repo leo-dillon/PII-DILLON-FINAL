@@ -9,6 +9,6 @@
         }else{
             $respuesta = FamiliasOlfativas::editarFamiliaOlfativa($id, $nombre);
         }
-        echo json_encode($nombre);
+        echo json_encode($respuesta);
     }
 ?>

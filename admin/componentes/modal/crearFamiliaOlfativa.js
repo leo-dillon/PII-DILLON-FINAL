@@ -6,6 +6,7 @@ import { exito } from "../../../componentes/modal/exito.js";
 
 export function crearFamiliaOlfativa(){
     let modal = document.querySelector('.modal') 
+    modal.innerHTML = ""
     modal.classList.add('Activado')
     let contenedor = crearElemento('div', {
         class: "contenedorModal editarDato"

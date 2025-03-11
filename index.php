@@ -1,4 +1,4 @@
-<?php 
+<?php
     require_once "./clases/servicios/Funciones.php";
     require_once "./clases/servicios/Conexion.php";
     require_once "./clases/modelos/Secciones.php";
@@ -8,18 +8,37 @@
     $seccionActual = Funciones::seccionActual();
     $seccionValidas = Secciones::seccionesValidas();
     $seccionFinal = "";
+    $usuarioLogeado = Usuario::usuarioLogeado();   
     if(!in_array($seccionActual, $seccionValidas)){
         $seccionFinal = "404"; 
     }else{
         $seccionFinal = $seccionActual;
     }
-    $usuarioLogeado = Usuario::usuarioLogeado(); 
-    if(  isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin' ){
+    if($seccionFinal == 'producto'){
+        $id_url = Funciones::traerDatoUrl('id');
+        if(!empty($id_url)){
+            $productoBuscado = Producto::traerProductoId($id_url);
+            if(empty($productoBuscado)){
+                header('Location: ?sec=404');
+            }
+        }
+    }
+    if($seccionFinal == 'iniciarSesion'){
+        if(isset($_SESSION['email'])){
+            header('location: ?sec=inicio');
+        }
+    }
+    if($seccionFinal == 'user'){
+        if(!isset($_SESSION['email'])){
+            header("location: ?sec=iniciarSesion");
+            exit();
+        }
+    }
+    if(isset($_SESSION['rol']) && $_SESSION['rol'] == 'admin' ){
         header("location: ./admin/admin.php");
+        exit();
     }
 ?>
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,9 +54,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php require_once "./views/layout/header.php";?>  
-    <?php require_once "./views/pages/$seccionFinal.php";?> 
-    <?php require_once "./views/layout/footer.php";?>  
+    <?php require_once "./views/layout/header.php";?>
+    <?php require_once "./views/pages/$seccionFinal.php";?>
+    <?php require_once "./views/layout/footer.php";?>
     
     <picture class="contenedor_smoke">
         <img class="smoke" src="./public/imagenes/smoke.png" alt="">
@@ -87,11 +106,10 @@
 
     .waves {
         position: fixed;
-        width: 100vw;
-        height: 15vh;
-        bottom: 20%;
-        right: 50%;
+        left: -120%;
+        top: 30%;
         rotate: 90deg;
+        z-index: -1;
     }
 
     .parallax > use {
@@ -121,5 +139,27 @@
         transform: translate3d(85px, 0, 0);
         }
     }
-    
+    @keyframes aparecer-izquierda {
+        0%{
+            transform: translateX(200%);
+        }
+        100%{
+            transform: translateX(0px);
+        }
+    }
+    @media (width < 500px){
+        .waves {
+            width: 200%;
+            position: fixed;
+            left: -100%;
+            top: 40%;
+            rotate: 90deg;
+            z-index: -1;
+        }
+    }
+    @media (width < 400px){
+        body main{
+            padding-top: 100px;
+        }
+    }
 </style>

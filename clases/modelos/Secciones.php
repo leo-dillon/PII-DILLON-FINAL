@@ -1,5 +1,4 @@
-<?php
-class Secciones {
+<?php class Secciones {
     private $seccion;
     private $texto;
     private $titulo;
@@ -43,4 +42,3 @@ class Secciones {
         return $seccionesValidas;
     }
 }
-?>

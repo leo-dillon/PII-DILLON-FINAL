@@ -8,8 +8,8 @@
     $seccionActual = Funciones::seccionActual();
     $seccionValidas = SeccionesAdmin::seccionesValidas();
     $seccionFinal = "";
-    if(!isset($_SESSION["rol"]) && $_SESSION['rol'] != "admin"){
-        header("location: ../");
+    if(!isset($_SESSION["rol"]) || $_SESSION['rol'] == "cliente"){
+        header("location: ../index.php");
     }
     if(!in_array($seccionActual, $seccionValidas)){
         $seccionFinal = "404"; 
@@ -93,6 +93,7 @@
         bottom: 20%;
         right: 50%;
         rotate: 90deg;
+        z-index: -1;
     }
 
     .parallax > use {
@@ -122,5 +123,9 @@
         transform: translate3d(85px, 0, 0);
         }
     }
-    
+    @media (width < 500px){
+        main{
+            padding-top: 42px;
+        }
+    }
 </style>

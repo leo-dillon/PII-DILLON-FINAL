@@ -4,7 +4,7 @@
             <img src="./public/imagenes/logoWhite.png" alt="logo de Leonardo Dillon">
         </picture>
     </div>
-    <div>
+    <div class="footer_contacto">
         <ul>
             <li>
                 <a href="?sec=inicio">Inicio</a>
@@ -19,7 +19,7 @@
             </li>
         </ul>
     </div>
-    <div>
+    <div class="comprasSeguras">
         <h2>Compras 100% seguras</h2>
         <div>
             <p>Perfumerías Pigmento garantiza la seguridad transaccional de sus clientes. Defensa de las y los Consumidores: por consultas y/o denuncias ingrese acá en CABA o acá en el resto del país</p>
@@ -46,5 +46,21 @@
         display: flex;
         align-items: center;
         gap: 4px;
+    }
+    @media (width < 900px){
+        .footer_contacto{
+            display: none;
+        }
+    }
+    @media (width < 700px){
+        footer{
+            flex-direction: column;
+        }
+        footer div{
+            display: none;
+        }
+        footer .comprasSeguras{
+            display: block;
+        }
     }
 </style>

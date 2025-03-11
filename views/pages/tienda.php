@@ -66,7 +66,7 @@
 
 
 <main>
-    <h1 id="tienda">Encuentra los productos de tus marcas favoritas</h1>
+    <h1 id="tienda">Encuentra tus productos favoritos</h1>
     <section>
         <form action="#tienda" method="GET">
             <input type="hidden" name="sec" value="tienda">
@@ -81,7 +81,7 @@
             <div>
                 <input type="submit" value="Buscar">
             </div>
-            <div>
+            <div class="filtros">
                 <p class="nombreFiltros">Filtros Actuales</p>
                 <?php
                     if(
@@ -186,6 +186,7 @@
     main h1{
         text-align: center;
         border-bottom: 2px solid var(--grey--80);
+        font-weight: 500;
     }
     main section{
         display: flex;
@@ -286,5 +287,80 @@
         width: 100%;
         padding-bottom: 12px;
         border-bottom: 2px solid var(--dark--100);
+    }
+    @media (width < 1000px){
+        main section form{
+            width: 200px;
+        }
+        main section form div select,
+        main section form div select option{
+            font-size: var(--font--1);
+        }
+    }
+    @media (width < 800px){
+        main h1{
+            font-size: var(--font--3);
+        }
+        main section form{
+            width: 180px;
+        }
+        main section form div p.nombreFiltros,
+        main section form div label,
+        main section form div input,
+        main section div.productos>p,
+        main section div.productos article.producto a{
+            font-size: var(--font--1);
+        }
+        main section div.productos article.producto{
+            max-width: 200px;
+            padding: 4px 0px 0px 0px;
+        }
+        main section div.productos article.producto picture{
+            height: 100%;
+            height: 120px;
+        }
+        main section div.productos article.producto p.precio{
+            font-size: var(--font--1);
+            padding: 0 0 0 4px;
+            text-align: center;
+    }
+    @media (width < 700px) {
+        main{
+            padding: 64px 2px;
+        }
+        section{
+            flex-direction: column;
+        }
+        main section form{
+            width: 100%;
+        }
+        main section div.productos{
+            padding: 48px 0px 24px;
+            gap: 12px 4px;
+        }
+    }
+    @media (width<500px){
+        section form{
+            margin-bottom: 32px;
+        }
+        .filtros{
+            display: none;
+        }
+        main section div.productos article.producto{
+            max-width: 160px;
+        }
+        main section div.productos article.producto picture img{
+            width: 100%;
+            max-width: 80px;
+            max-height: 90px;
+        }
+        main section div.productos article.producto p{
+            width: 95%;
+            font-size: 14px;
+        }
+        main section div.productos article.producto div{
+            flex-direction: column;
+        }
+    }
     }
 </style>

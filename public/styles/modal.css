@@ -221,3 +221,18 @@
     border-radius: 12px;
     cursor: pointer;
 }
+
+@media(width < 700px){
+    div.modal div.contenedorModal{
+        max-width: calc(300px - 44px);
+    }
+    div.modal div.contenedorModal h2{
+        font-size: var(--font--2);
+    }
+    div.modal div.contenedorModal picture{
+        max-width: 90px;
+    }
+    div.modal div.contenedorModal button{
+        font-size: var(--font--1);
+    }
+}

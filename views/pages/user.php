@@ -1,8 +1,4 @@
 <?php 
-    require_once './clases/modelos/Usuario.php';
-    if(!$_SESSION['email']){
-        header("location: ?sec=iniciarSesion");
-    }
     $email = $_SESSION['email'];
     $nombre = $_SESSION['nombre'];
     $usuario_id = $_SESSION['usuario_id'];
@@ -74,6 +70,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        flex-wrap: wrap;
         padding: 124px 0;
         background-color: var(--white--100);
     }
@@ -82,15 +79,19 @@
         color: var(--text--dark);
     }
     section p.presentacion{
+        width: 80%;
+        margin: 0 auto; 
+        text-align: center;
         font-size: var(--font--2);
         color: var(--text--light--dark);
     }
     section div.btns{
-        width: 100%;
+        width: calc(100% - 24px);
         max-width: 1000px;
         padding: 12px;
         margin-top: 64px;
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         gap: 24px;
     }
@@ -117,7 +118,8 @@
         color: var(--text--dark);
     }
     .datos{
-        width: 900px;
+        width: 100%;
+        max-width: 900px;
         padding: 64px 0;
         display: flex;
         flex-direction: column;
@@ -181,6 +183,7 @@
         padding: 6px 4px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         border: 1px solid var(--cyan--100);
     }
     .datos div.carrito picture{
@@ -196,7 +199,8 @@
     }
     .datos div.carrito h3{
         flex-grow: 1;
-        padding-left: 64px;
+        max-width: 300px;
+        padding-right: 4px;
         color: var(--text--dark);
         font-weight: 500;
     }
@@ -206,18 +210,22 @@
         gap: 12px;
         overflow: hidden;
     }
+    .datos div.carrito button,
     .datos div.carrito form button{
-        width: 36px;
+            width: 36px;
         background-color: transparent;
         padding: 6px;
         border-radius: 50%;
         border: 1px solid var(--dark--100);
         cursor: pointer;
     }
+    .datos div.carrito button i,
     .datos div.carrito form button i{
         color: var(--dark--100);
     }
     .datos div.carrito form input{
+        display: flex;
+        justify-content: center;
         width: 48px;
         text-align: center;
         font-size: var(--font--1);
@@ -233,7 +241,7 @@
     }
 
     .datos div.carrito p{
-        min-width: 100px;
+        min-width: 50px;
         text-align: center;
         margin: 0 24px;
         font-size: var(--font--3);
@@ -289,5 +297,94 @@
     }
     .datos a.btnPago:hover{
         letter-spacing: 2px;
+    }
+    @media(width<1000px){
+        section div.datos{
+            width: 90%;
+            margin: 0 auto;
+        }
+    }
+
+    @media(width<800px){
+        section{
+            padding: 48px 0 24px;
+        }
+        section div.btns{
+            margin-top: 12px;
+        }
+        section div.btns a{
+            width: 200px;
+            height: 80px;
+            font-size: var(--font--2);
+        }
+        section div.btns a i{
+            font-size: var(--font--3);
+        }
+    }
+    @media(width<700px){
+        section div.datos h2{
+            font-size: var(--font--3);
+        }
+        section div.datos div.carrito{
+            flex-wrap: wrap;
+        }
+        section div.datos div.carrito h3{
+            max-width: 100px;
+            font-size: var(--font--1);
+        }
+        section div.datos div.resumenCarrito{
+            flex-wrap: wrap;
+        }
+        section div.datos div.resumenCarrito h3{
+            width: 100%;
+            margin-bottom: 8px;
+        }
+    }
+    @media(width<600px){
+        section div.datos div.carrito{
+            justify-content: center;
+        }
+        section div.datos div.carrito picture{
+            width: 30%;
+            justify-content: end;
+            padding-bottom: 4px;
+        }
+        section div.datos div.carrito h3{
+            width: 50%;
+            max-width: none;
+            font-size: var(--font--2);
+        }
+        section div.datos div.carrito picture img{
+            height: 100%;
+            max-width: 80px;
+        }
+        section div.datos div.carrito p{
+            margin: 0 12px;
+        }
+    }
+    @media(width<500px){
+        section h1{
+            font-size: var(--font--3);
+        }
+        section p.presentacion{
+            font-size: var(--font--1);
+        }
+        .datos .resumenCarrito{
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+        }
+        .datos .resumenCarrito h3{
+            text-align: center;
+        }
+        .datos .resumenCarrito p{
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+        div.datos div.carrito form{
+            gap: 4px;
+        }
     }
 </style>

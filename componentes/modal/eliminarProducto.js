@@ -1,7 +1,7 @@
 import { deleteProductoCarrito } from "../../public/js/carrito/deleteProductoCarrito.js";
 import { crearElemento } from "../../public/js/general.js";
 
-export function eliminarProducto(producto_id, usuario_id, imagen, nombre, contenedor, precio, actualizarPrecioFinal){
+export function eliminarProducto(producto_id, usuario_id, imagen, nombre, contenedor, precio, actualizarPrecioFinal, cantidad = 1){
     let modal = document.querySelector('.modal')
     modal.innerHTML = ''
     let div = crearElemento('div', {
@@ -21,7 +21,7 @@ export function eliminarProducto(producto_id, usuario_id, imagen, nombre, conten
     div_div_eliminar.addEventListener('click', () => {
         deleteProductoCarrito(usuario_id, producto_id)
         contenedor.remove()
-        actualizarPrecioFinal(-precio)
+        actualizarPrecioFinal(-(precio * cantidad), cantidad)
     })
     let div_div_cancelar = crearElemento('button', {
         id: "cancelar"

@@ -139,4 +139,22 @@
         font-size: var(--font--1);
         border-bottom: 1px solid var(--dark--80);
     }
+    @media (width < 600px){
+        .alumno{
+            flex-direction: column;
+        }
+        .alumno div.yo{
+            width: calc(100% - 64px);
+        }
+        .alumno div.datos{
+            margin-top: 24px;
+        }
+        .alumno div.datos p{
+            width: 100%;
+            text-align: center  ;
+        }
+        P{
+            font-size: var(--font--1) !important;
+        }
+    }
 </style>

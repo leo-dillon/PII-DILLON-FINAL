@@ -170,6 +170,15 @@ export function editarProducto(tabla, marcas, generos, familiaOlfativas, concent
             `
             contenedor_form_inputNombre.classList.add("error")
         }
+        if(datos.get("nombre").length >= 20){
+            validar = false
+            contenedor_form_labelNombre.innerHTML = `
+                Nuevo Nombre
+                <br> 
+                <small style='color:red'>Debe tener menos de 20 caracteres</small>
+            `
+            contenedor_form_inputNombre.classList.add("error")
+        }
         if(datos.get("descripcion").length <= 5){
             validar = false
             contenedor_form_labelDescripcion.innerHTML = `

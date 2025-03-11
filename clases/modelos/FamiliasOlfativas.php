@@ -1,5 +1,4 @@
 <?php
-
 class FamiliasOlfativas{
     private $id;
     private $nombre;
@@ -117,4 +116,3 @@ class FamiliasOlfativas{
         }
     }
 }
-?>

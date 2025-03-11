@@ -187,4 +187,23 @@ main section{
 .btnCrear i{
     color: var(--text--dark);   
 }
+@media (width < 900px){
+    main h1 {
+        font-size: var(--font--5);
+    }
+    main p{
+        font-size: var(--font--2);
+        width: 80%;
+        margin: 0 auto;
+    }
+    .perfume-table th, .perfume-table td {
+        padding: 4px 8px;
+    }
+    .perfume-table td{
+        height: 32px;
+    }
+    main section{
+        margin-top: 12px;
+    }
+}
 </style>

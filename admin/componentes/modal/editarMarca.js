@@ -7,6 +7,7 @@ import { exito } from "../../../componentes/modal/exito.js";
 export function editarMarca(marcaID, nombre){
     let modal = document.querySelector('.modal') 
     modal.classList.add('Activado')
+    modal.innerHTML = ""
     let contenedor = crearElemento('div', {
         class: "contenedorModal editarDato"
     })
@@ -69,7 +70,15 @@ export function editarMarca(marcaID, nombre){
                 <small style='color:red'>Debe contener más de 3 caracteres</small>
             `
             contenedor_form_inputText.classList.add("error")
-        }else{
+        } else if(datos.get("marca").length >= 40){
+            validar = false
+            contenedor_form_label.innerHTML = `
+                Editar Marca
+                <br> 
+                <small style='color:red'>Debe tener menos de 20 caracteres</small>
+            `
+            contenedor_form_inputText.classList.add("error")
+        } else{ 
             fetch("../actions/marca/editarMarca.php", {
                 method: "POST",
                 body: datos

@@ -31,6 +31,7 @@
         align-items: center;
         justify-content: center;
         background-color: var(--white--100);
+        padding: 32px 0;
     }
     main h1{
         font-size: var(--font--5);
@@ -72,5 +73,33 @@
         padding-bottom: 4px;
         font-size: var(--font--5);
         color: var(--text--dark);
+    }
+    @media (width < 900px){
+        section.btns a{
+            width: 200px;
+        }
+    }
+    @media (width < 700px){
+        main h1{
+            font-size: var(--font--3);
+        }
+        main p{
+            width: 80%;
+            text-align: center;
+            font-size: var(--font--1);
+        }
+        section.btns{
+            width: 90%;
+            margin: 0 auto;
+            gap: 12px;
+        }
+        section.btns a{
+            width: 150px;
+            height: 80px;
+            font-size: var(--font--1);
+        }
+        section.btns a i{
+            font-size: var(--font--2);
+        }
     }
 </style>

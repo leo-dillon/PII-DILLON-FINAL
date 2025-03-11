@@ -1,5 +1,4 @@
-<?php 
-    class Funciones{
+<?php class Funciones{
         public static function seccionActual(){
             if(isset($_SESSION['rol']) && $_SESSION['rol'] == "admin" ){
                 $seccion = isset($_GET['sec']) ? $_GET['sec']: 'inicioAdmin';
@@ -52,7 +51,4 @@
                     </article>";
             return $prodcuto;
         }
-        
     }
-
-?>

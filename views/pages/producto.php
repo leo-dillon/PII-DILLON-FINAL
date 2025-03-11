@@ -1,23 +1,17 @@
 <?php 
     require_once './clases/modelos/Productos.php';
     require_once './clases/servicios/Funciones.php';
-    $id_url = Funciones::traerDatoUrl('id');
+    $idProductos = Producto::traerIDProductoAnteriorPosterior($id_url);
     if(isset($_SESSION['usuario_id'])){
         $userId = $_SESSION['usuario_id'];
     }else{
         $userId = false;
     }
-    if(!empty($id_url)){
-        $productoBuscado = Producto::traerProductoId($id_url);
-    }
     $productosTotales = Producto::cantidadProductos();
-    if(empty($productoBuscado)){
-        header('Location: ?sec=404');
-    }
 ?>
 <main>
     <section>
-        <div>
+        <div class="datosProducto">
             <picture>
                 <img src="<?php echo $productoBuscado['imagen']; ?>" alt="<?php echo $productoBuscado['nombre']; ?>">
             </picture>
@@ -65,21 +59,21 @@
             </div>
         </div>
         <?php
-            if(!($productosTotales['total'] == $productoBuscado['id'])){ 
+            if($idProductos['producto_siguiente'] != ""){ 
         ?>
-            <a class="next" href="?sec=producto&id=<?=$productoBuscado['id']+1?>">
-                Siguiente producto.
+            <a class="next" href="?sec=producto&id=<?=$idProductos['producto_siguiente']?>">
+                Siguiente <span>Producto</span>
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
         <?php 
             } 
         ?>
         <?php 
-            if(!(1 == $productoBuscado['id'])){
+            if($idProductos['producto_anterior'] != ""){
         ?>
-            <a class="last" href="?sec=producto&id=<?=$productoBuscado['id']-1?>">
+            <a class="last" href="?sec=producto&id=<?=$idProductos['producto_anterior']?>">
                 <i class="fa-solid fa-arrow-right"></i>
-                Anterior producto.
+                Anterior <span>Producto</span>
             </a>
         <?php 
             }
@@ -120,7 +114,7 @@
 </script>
 <style scoped>
     section{
-        padding: 58px 32px 32px;
+        padding: 58px 32px 90px;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -296,5 +290,67 @@
     section a.next:hover,
     section a.last:hover{
         letter-spacing: 4px;
+    }
+    @media (width < 900px){
+        main section{
+            padding: 58px 6px 90px;
+        }
+        main section div.datosProducto{
+            max-width: 95%;
+            margin-left: 4px;
+            padding: 24px 4px;
+            justify-content: center;
+            gap: 12px;
+        }
+        main section div.datosProducto picture{
+            max-width: 200px;
+        }
+        main section div.datosProducto h1{
+            font-size: var(--font--3);
+        }
+        main section div.extra div.producto-detalles{
+            gap: 6px;
+        }
+        section>div div form input[type=submit]{
+            font-size: var(--font--1);
+        }
+        section div.extra{
+            align-items: center;
+        }
+    }
+    @media (width < 500px){
+        main section div.datosProducto{
+            max-width: 300px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        main section div.datosProducto picture{
+            max-width: 130px;
+        }
+        main section div.datosProducto div.caracteristicas{
+            padding: 0;
+        }
+        
+        main section div.datosProducto div.caracteristicas div{
+            align-items: center;
+        }
+        main section div.datosProducto div.caracteristicas div h1{
+            right: 0;
+            text-align: center;
+        }
+        main section div.datosProducto div.caracteristicas div p{
+            width: 80%;
+        }
+        section a.next:hover,
+        section a.last:hover{
+            letter-spacing: 0px;
+        }
+    }
+    @media (width < 370px){
+        section a.next span,
+        section a.last span{
+            display: none;
+        }
     }
 </style>

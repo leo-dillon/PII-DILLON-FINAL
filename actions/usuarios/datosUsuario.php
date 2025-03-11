@@ -1,5 +1,4 @@
-<?php 
-
+<?php
 include '../../clases/modelos/Usuario.php';
 include '../../clases/servicios/Conexion.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -27,6 +26,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }else{
     echo "error";
 }
-
-    // Recoger los datos del formulario
 ?>

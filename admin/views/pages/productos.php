@@ -16,23 +16,25 @@
     <h1>Productos</h1>
     <p> Todos los productos de la tienda se encuentran en esta tabla </p>
     <section>
-        <table class="perfume-table">
-            <thead>
-                <tr>
-                    <th >ID</th>
-                    <th >Imagen</th>
-                    <th >Nombre</th>
-                    <th >Precio</th>
-                    <th >Stock</th>
-                    <th >Marca</th>
-                    <th >Género</th>
-                    <th >Familia Olfativa</th>
-                    <th >Concentración</th>
-                    <th >Capacidad</th>
-                    <th >Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="contenedor_table">
+            <table class="perfume-table">
+                <thead>
+                    <tr>
+                        <th >ID</th>
+                        <th >Imagen</th>
+                        <th >Nombre</th>
+                        <th >Descripción</th>
+                        <th >Precio</th>
+                        <th >Stock</th>
+                        <th >Marca</th>
+                        <th >Género</th>
+                        <th >Familia Olfativa</th>
+                        <th >Concentración</th>
+                        <th >Capacidad</th>
+                        <th >Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <?php 
                 foreach( $productos as $value){
                 ?>
@@ -40,6 +42,7 @@
                         <td><?=$value['id']?></td>
                         <td><img src=".<?=$value['imagen']?>" alt="<?=$value['nombre']?>" class="perfume-image"></td>
                         <td><?=$value['nombre']?></td>
+                        <td class="td-descripcion"><?=$value['descripcion']?></td>
                         <td>$<?=$value['precio']?></td>
                         
                         <td style=<?=($value["stock"] < 10)?"color:red": ""?>><?=$value['stock']?></td>
@@ -69,8 +72,10 @@
                 <?php 
                 }
                 ?>
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+
             <button class="btnCrear" title="Crear nuevo producto"
                 data-marca='<?=json_encode($marcas)?>' 
                 data-genero='<?=json_encode($generos)?>' 
@@ -142,7 +147,7 @@ main section{
 }
 .perfume-table {
     position: relative;
-    width: 100%;
+    width: 98%;
     max-width: 1200px;
     border-collapse: collapse;
     margin: 52px auto;
@@ -153,7 +158,7 @@ main section{
 }
 
 .perfume-table th, .perfume-table td {
-    padding: 15px;
+    padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
@@ -178,6 +183,9 @@ main section{
 .perfume-table td img {
     display: block;
     margin: 0 auto;
+}
+.td-descripcion{
+    font-size: var(--font--0);
 }
 
 .btn {
@@ -220,7 +228,7 @@ main section{
     justify-content: center;
     align-items: center;
     top: 0;
-    right: 0;
+    right: 32px;
     padding: 12px;
     background-color: var(--white--100);
     border: 1px solid var(--dark--100);
@@ -234,5 +242,54 @@ main section{
 }
 .btnCrear i{
     color: var(--text--dark);   
+}
+@media (width < 1100px){
+    table.perfume-table td, 
+    table.perfume-table th{
+        font-size: var(--font--0);
+    }   
+    table.perfume-table td button{
+        width: 32px;
+        height: 32px;
+        padding: 4px;
+    }
+}
+@media (width < 1000px){
+    table.perfume-table td button.delete-btn{
+        margin: 0;
+    }
+}
+@media (width < 900px){
+    main{
+        padding-top: 32px;
+    }
+    main h1{
+        font-size: var(--font--4);
+    }
+    main>p{
+        width: 100%;
+        max-width: 90vw;
+        font-size: var(--font--1);
+    }
+    main section div.contenedor_table{
+        background: linear-gradient(
+            to right, 
+            rgba(255, 255, 255, 1) 0%, 
+            transparent 90%,  100%
+        );
+        width: 100%;
+        max-width: 95vw;
+        overflow-x: auto ;
+    }
+    main section div.contenedor_table .perfume-table{
+        box-shadow: none;
+    }
+    main section div.contenedor_table div.perfume-table{
+
+    }
+    section button.btnCrear{
+        right: none;
+        left: 12px;
+    }
 }
 </style>

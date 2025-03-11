@@ -5,7 +5,8 @@ import { exito } from "../../../componentes/modal/exito.js";
 
 
 export function editarConcentracion(concentracionID, nombre){
-    let modal = document.querySelector('.modal') 
+    let modal = document.querySelector('.modal')
+    modal.innerHTML = ""
     modal.classList.add('Activado')
     let contenedor = crearElemento('div', {
         class: "contenedorModal editarDato"
@@ -69,7 +70,15 @@ export function editarConcentracion(concentracionID, nombre){
                 <small style='color:red'>Debe tener más de 3 caracteres</small>
             `
             contenedor_form_inputText.classList.add("error")
-        }else{
+        } else if(datos.get("concentracion").length >= 40){
+            validar = false
+            contenedor_form_label.innerHTML = `
+                Editar Concentracion
+                <br> 
+                <small style='color:red'>Debe tener menos de 20 caracteres</small>
+            `
+            contenedor_form_inputText.classList.add("error")
+        } else {
             fetch("../actions/concentracion/editarConcentracion.php", {
                 method: "POST",
                 body: datos

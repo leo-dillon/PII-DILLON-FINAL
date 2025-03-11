@@ -4,17 +4,13 @@ require_once "./clases/modelos/Usuario.php";
 require_once "./clases/servicios/Funciones.php";
 $seccionVisible = Secciones::seccionesVisibles();
 $seccionActual = Funciones::seccionActual();
-
 ?>
 <header>
-    <a href="?sec=inicio">
-        <picture class="logo">
-            <img src="./public/imagenes/logoWhite.png" alt="">
+    <a href="?sec=inicio" class="logo">
+        <picture class="logo_img">
+            <img src="./public/imagenes/logoWhite.png" alt="Logo de Leonardo Dillon">
         </picture>
     </a>
-    <?php
-
-    ?>
     <nav>
         <?php
         foreach ($seccionVisible as $value) {
@@ -35,6 +31,7 @@ $seccionActual = Funciones::seccionActual();
             if($usuarioLogeado){
         ?>
             <a href="?sec=user" class="icono_login">
+                <span>Bienvenido</span>
                 <i class="fa-solid fa-user"></i>
             </a>
         <?php
@@ -48,16 +45,34 @@ $seccionActual = Funciones::seccionActual();
         ?>
     </div>
 </header>
+
 <script>
-        window.addEventListener('resize', () => {
-            const screenWidth = window.innerWidth;
-        const header = document.querySelector('header');
+    let logo = document.querySelector('.logo')
+    const header = document.querySelector('header');    
+    logo.addEventListener('click', (event) => {
+        event.preventDefault()
+        const screenWidth = window.innerWidth;
+        if(screenWidth < 400 ){
+            header.classList.toggle('abierto')
+        }else{
+            location.href = "?sec=inicio"
+        }
+
+    })
+    document.addEventListener('DOMContentLoaded', () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 400) {
+            header.classList.add('menu');
+        }
+    })
+    window.addEventListener('resize', () => {
+        const screenWidth = window.innerWidth;
         if (screenWidth < 400) {
             header.classList.add('menu');
         } else {
             header.classList.remove('menu');
         }
-        })
+    })
 </script>
 <style scoped>
     header {
@@ -73,7 +88,7 @@ $seccionActual = Funciones::seccionActual();
         max-width: 72px;
     }
 
-    header a picture.logo {
+    header a picture.logo_img {
         display: block;
         width: 100%;
         max-width: 80px;
@@ -82,17 +97,17 @@ $seccionActual = Funciones::seccionActual();
         transition: transform .1s ease-out;
     }
 
-    header a picture.logo:active {
+    header a picture.logo_img:active {
         transform: rotate(10deg);
     }
 
-    header a picture.logo img {
+    header a picture.logo_img img {
         width: 80%;
         padding: 10%;
         transition: background-color .3s ease-out, scale .3s ease-out;
     }
 
-    header a picture.logo img:hover {
+    header a picture.logo_img img:hover {
         scale: 1.05;
         background-color: var(--grey--60);
     }
@@ -149,7 +164,9 @@ $seccionActual = Funciones::seccionActual();
         text-wrap: nowrap;
         cursor: pointer;
     }
-
+    header div a.icono_login span{
+        display: none;
+    }
     header a:active {
         transform: translateY(2px);
     }
@@ -158,36 +175,64 @@ $seccionActual = Funciones::seccionActual();
             height: auto;
             flex-wrap: wrap;
             gap: 24px;
+            padding: 12px;
         }
         header>a{
             display: flex;
             justify-content: center;
             width: 45%;
             max-width: 50%;
+            order: 0;
         }
         header>div{
             display: flex;
             justify-content: center;
             width: 45%;
             max-width: auto;
+            order: 1;
         }
         header nav{
             width: 100%;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap ;
-            margin: 0;
-            order: 2;
+            margin: 0 auto;
+            order: 3;
+        }
+        header nav a{
+            font-size: var(--font--1);
         }
     }
     @media( width < 400px){
         header.menu{
-            height: 64px;
-            width: 64px;
             position: fixed;
-            top: 4px;
-            right: 4px;
+            top: 0px;
+            right: 0px;
+            height: 64px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 2px;
             background-color: var(--dark--100);
+            border-bottom: 1px solid var(--white--50);
             overflow: hidden;
+            transition: width .2s ease-out, height .2s ease-out, border-radius .3s ease-out;
+        }
+        header.menu>a{
+            width: 80%;
+            max-width: 100%;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+        }
+        header.menu>a picture{
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+        }
+        header.menu>a picture img{
+            width: 100%;
+            max-width: 40px;
         }
         header.menu.abierto{
             width: calc(100% - 64px);
@@ -195,22 +240,51 @@ $seccionActual = Funciones::seccionActual();
             height: calc(100% - 64px);
             flex-direction: column;
             align-items: center;
+            justify-content: start;
+            padding: 32px;
+            top: 0;
+            right: 0;
             gap: 0;
+            border: 0;
+            border-radius: 0;
         }
-        header>a{
+        header.menu.abierto>a{
             width: 100%;
             max-width: auto;
             margin-bottom: 24px;
         }
-        header>div{
+        header.menu>div,
+        header.menu nav{
+            display: none;
+        }
+        header.menu.abierto>div{
+            display: flex;
             margin-top: 12px;
             justify-content: start;
             width: 100%;
             order: 2;
+            animation: aparecer-izquierda .6s ease-out both;
         }
-        header nav{
+        header.menu.abierto nav{
+            display: flex;
             flex-direction: column;
             order: 1;
+            animation: aparecer-izquierda .4s ease-out both;
+        }
+        header div a,
+        header nav a{
+            width: 100%;
+            padding: 0;
+            border-radius: 0;
+            border-bottom: 1px solid var(--white--50);
+        }
+        header div a.icono_login{
+            width: 100%;
+            justify-content: center;
+        }
+        header div a.icono_login span{
+            display: inline-block;
+            margin-right: 12px;
         }
     }
 </style>

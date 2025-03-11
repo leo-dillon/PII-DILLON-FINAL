@@ -1,5 +1,4 @@
-    <?php 
-class Producto{
+<?php class Producto{
     private $producto_id ;
     private $producto_nombre ;
     private $producto_descripcion ;
@@ -387,7 +386,20 @@ class Producto{
             return false;
         }
     }
+
+    public static function traerIDProductoAnteriorPosterior($id){
+        $conexion = (new Conexion())->getConexion();
+        $query = "
+            SELECT 
+                (SELECT MAX(id) FROM producto WHERE id < :idProducto) AS producto_anterior,
+                (SELECT MIN(id) FROM producto WHERE id > :idProducto) AS producto_siguiente;
+        ";
+        $PDOStatement = $conexion -> prepare($query);
+        $PDOStatement -> setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement -> execute( ['idProducto' => $id]);
+
+        $lista = $PDOStatement -> fetch();
+        return $lista;
+    }
     
 }
-
-?>

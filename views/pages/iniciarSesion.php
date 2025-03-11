@@ -1,8 +1,3 @@
-<?php 
-    if(isset($_SESSION['email'])){
-        header('location: ?sec=inico');
-    }
-?>
 
 <main>
     <section>
@@ -66,7 +61,7 @@
     }
 
     section {
-        width: 100%;
+        width: calc(100% - 24px);
         max-width: 600px;
         padding: 12px;
         padding-bottom: 32px;
@@ -146,5 +141,12 @@
         align-self: flex-end;
         color: var(--text--light--dark);
     }
-
+    @media (width < 500px){
+        main section form>input,
+        main section form a{
+            width: 80%;
+            align-self: center;
+            text-align: center;
+        }
+    }
 </style>

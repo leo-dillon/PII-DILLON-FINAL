@@ -98,7 +98,7 @@
     }
 
     section {
-        width: 100%;
+        width: calc(100% - 24px);
         max-width: 600px;
         padding: 12px;
         padding-bottom: 32px;
@@ -184,5 +184,15 @@
     small{
         color: red;
     }
-
+    @media (width < 500px){
+        main section h2{
+            font-size: var(--font--3);
+        }
+        main section form>input,
+        main section form a{
+            width: 80%;
+            align-self: center;
+            text-align: center;
+        }
+    }
 </style>

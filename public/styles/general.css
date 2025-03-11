@@ -127,7 +127,59 @@ picture.contenedor_smoke {
 .producto div a:hover{
     background-color: #a6d9f1;
 }
-
+@media(width < 1000px){
+    section.categorias h2{
+        text-align: center;
+    }
+    section.categorias div.explora ul{
+        width: 240px;
+    }
+}
+@media(width < 800px){
+    article.producto{
+        width: 80%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    article.producto h3{
+        font-size: var(--font--3);
+    }
+    article.producto p{
+        width: 90%;
+    }
+    article.producto picture{
+        max-width: 120px;
+        max-height: 120px;
+    }
+    article.producto picture img{
+        max-width: 120px;
+    }
+}
+@media (width < 500px){
+    article.producto{
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    article.producto h3{
+        font-size: var(--font--2);
+    }
+    article.producto picture{
+        max-width: 80px;
+        max-height: 80px;
+    }
+    article.producto picture img{
+        width: 100%;
+    }
+}
+@media (width < 430px){
+    article.producto div{
+        flex-direction: column;
+    }
+    article.producto div p{
+        text-align: center;
+    }
+}
 
 @keyframes seg_3 {
     0% {
